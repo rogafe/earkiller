@@ -12,6 +12,7 @@ import (
 	"syscall"
 	"time"
 
+	embed "github.com/Clinet/discordgo-embed"
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
 )
@@ -190,7 +191,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 				}
 			case "*help":
 				// s.ChannelMessageSend(m.ChannelID, "Command are, *DECIDE and !TAGUEULE use it with @nickofuser")
-				embed := NewEmbed().
+				embed := embed.NewEmbed().
 					SetTitle("Help").
 					SetDescription("Merci a fanta pour les sound byte").
 					AddField("*DECIDE", "Nom mais c'est pas toi qui decide").
