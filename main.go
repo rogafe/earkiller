@@ -119,11 +119,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// _, found := Find(config.Admin, m.Author.ID)
 	found := true
 	if found {
-		if msg[0:1] == "*" {
+		if msg[0:1] == "$" {
 			splitString := strings.Split(m.Content, " ")
-			// log.Println(splitString, len(splitString), m.Author.ID)
+			log.Println(splitString, len(splitString), m.Author.ID)
 			switch splitString[0] {
-			case "*TAGUEULE":
+			case "$TAGUEULE":
 				filename := "tg.dca"
 				log.Println("case *TAGUEULE")
 				if len(splitString) > 1 {
@@ -145,7 +145,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 						}
 					}
 				}
-			case "*DECIDE":
+			case "$DECIDE":
 				filename := "decide.dca"
 				log.Println("case *DECIDE")
 				if len(splitString) > 1 {
@@ -167,7 +167,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 						}
 					}
 				}
-			case "*PIRATE":
+			case "$PIRATE":
 				filename := "pirate.dca"
 				log.Println("case *PIRATE")
 				if len(splitString) > 1 {
@@ -189,13 +189,13 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 						}
 					}
 				}
-			case "*help":
+			case "$help":
 				// s.ChannelMessageSend(m.ChannelID, "Command are, *DECIDE and !TAGUEULE use it with @nickofuser")
 				embed := embed.NewEmbed().
 					SetTitle("Help").
 					SetDescription("Merci a fanta pour les sound byte").
-					AddField("*DECIDE", "Nom mais c'est pas toi qui decide").
-					AddField("*TAGGUELE", "TG").
+					AddField("$DECIDE", "Nom mais c'est pas toi qui decide").
+					AddField("$TAGGUELE", "TG").
 					SetColor(0x00ff00).MessageEmbed
 
 				s.ChannelMessageSendEmbed(m.ChannelID, embed)
